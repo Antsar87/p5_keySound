@@ -12,17 +12,17 @@ var smoothing = 0.8; // play with this, between 0 and .99
 var binCount = 1024; // size of resulting FFT array. Must be a power of 2 between 16 an 1024
 var particles = new Array(binCount);
 
-function setup() {
+function setup()  {
   c = createCanvas(windowWidth, windowHeight);
   noStroke();
 
-  soundFile = createAudio('../../music/LCIR_85_Bmin_Kit2_Pad_chorus.wav');
-  soundFile2 = createAudio('../../music/LCIR_85_Bmin_Kit2_Pad_intro.wav');
-  soundFile3 = createAudio('../../music/LCIR_85_Bmin_Kit2_Pad_verse.wav');
-  soundFile4 = createAudio('../../music/LCIR_90_Amaj_Kit7_Pad_02.wav');
-  soundFile5 = createAudio('../../music/Pad1.wav');
+  soundFile = createAudio('../../music/LCIR_85_Bmin_Kit2_Pad_chorus.wav', afterload);
+  soundFile2 = createAudio('../../music/LCIR_85_Bmin_Kit2_Pad_intro.wav', afterload);
+  soundFile3 = createAudio('../../music/LCIR_85_Bmin_Kit2_Pad_verse.wav', afterload);
+  soundFile4 = createAudio('../../music/LCIR_90_Amaj_Kit7_Pad_02.wav', afterload);
+  soundFile5 = createAudio('../../music/Pad1.wav', afterload);
   mic = new p5.AudioIn();
-  mic.start();
+  mic.start();  
 
   // initialize the FFT, plug in our variables for smoothing and binCount
   fft = new p5.FFT(smoothing, binCount);
@@ -35,7 +35,15 @@ function setup() {
     var position = createVector(x, y);
     particles[i] = new Particle(position);
   }
+  getAudioContext().resume();
+
+  // The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page.
 }
+
+function afterload() {
+  getAudioContext().resume();
+}
+
 
 function draw() {
   background(0, 0, 0, 100);
