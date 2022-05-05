@@ -54,8 +54,8 @@ function setup() {
     notes[i].draw();
   }
 
-  loadJSON('../../music/Alaclair_Ensemble_-_Twit_JournalisT.json', gotData);
-  audioEl = createAudio('../../music/Alaclair_Ensemble_-_14_-_Twit_JournalisT.mp3');
+  loadJSON('../../music/Alaclair_Ensemble_-_Twit_JournalisT.json',2, gotData);
+  audioEl = createAudio('../../music/Inara_George_-_Q.mp3');
 }
 
 function draw() {

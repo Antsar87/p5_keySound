@@ -22,9 +22,7 @@ function setup() {
   soundFile4 = createAudio('../../music/LCIR_90_Amaj_Kit7_Pad_02.wav');
   soundFile5 = createAudio('../../music/Pad1.wav');
   mic = new p5.AudioIn();
-  soundFile.play()
   mic.start();
-  soundFile.stop()
 
   // initialize the FFT, plug in our variables for smoothing and binCount
   fft = new p5.FFT(smoothing, binCount);
