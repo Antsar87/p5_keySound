@@ -63,7 +63,6 @@ function draw() {
 
   // draw shape
   beginShape();
-  fill("rgba(245, 40, 145, 0.1)")
 
   // one at the far corner
   curveVertex(0, h);
